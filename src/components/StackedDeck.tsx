@@ -98,16 +98,16 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
                 }}
                 whileHover={{ scale: 1.03, y: -4 }}
                 onClick={() => onCardClick(card.workKey)}
-                className="relative w-full max-w-[320px] rounded-[28px] p-5 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
+                className="relative w-full max-w-[320px] rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
                 style={{
                   background: `hsl(var(${card.colorVar}))`,
                   boxShadow: "var(--shadow-card)",
                 }}
               >
-                <span className="text-[10px] tracking-label uppercase text-primary-foreground/65 font-body">
+                <span className="text-[10px] tracking-label uppercase text-primary-foreground/65 font-body pl-0.5">
                   {card.label}
                 </span>
-                <span className="font-display text-[1.9rem] md:text-[2rem] text-primary-foreground leading-[1.05] max-w-[9ch]">
+                <span className="font-display text-[1.9rem] md:text-[2rem] text-primary-foreground leading-[1.05] max-w-[8.6ch] pl-0.5">
                   {card.mainText}
                 </span>
               </motion.div>
