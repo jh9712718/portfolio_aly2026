@@ -83,7 +83,7 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
           onClick={() => setSpread(false)}
         >
           <div
-            className="mx-auto flex w-full max-w-[320px] flex-col items-stretch gap-3 md:max-w-none md:flex-row md:gap-5 md:overflow-x-auto md:pb-4 md:pr-2"
+            className="mx-auto flex w-full max-w-[320px] flex-col items-stretch gap-3 md:max-w-none md:grid md:grid-flow-col md:auto-cols-[280px] md:gap-5 md:overflow-x-auto md:justify-start md:pb-4"
             onClick={(event) => event.stopPropagation()}
           >
             {cards.map((card, i) => (
