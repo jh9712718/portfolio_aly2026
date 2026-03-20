@@ -86,8 +86,8 @@ const workDetails: Record<string, { color: string; role: string; descriptions: R
     role: "Business Operation and Customer Analytics",
     descriptions: {
       en: "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
-      "zh-CN": "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
-      "zh-TW": "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
+      "zh-CN": "使用经典数据组，通过搭建回归模型，探讨了美国四大核心区域内超市折扣与销售额之间的强正向线性相关性，旨在为制定本地化销售目标及风险管理提供战略洞察。",
+      "zh-TW": "運用經典數據集，透過建立回歸模型，探討了美國四大核心區域內超市折扣與銷售額之間的強烈正向線性相關性，旨在為制定本地化銷售目標及風險管理提供戰略性洞察。",
     },
   },
   "Event Management": {
