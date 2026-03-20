@@ -136,6 +136,13 @@ const Index = () => {
           className="grid md:grid-cols-[minmax(0,1.15fr)_auto] gap-10 md:gap-12 items-start"
         >
           <div className="space-y-6">
+            <div className="md:hidden pt-1 pb-2">
+              <img
+                src={profilePhoto}
+                alt="Alyssa Li"
+                className="w-28 h-28 rounded-full object-cover border border-border"
+              />
+            </div>
             <p className="text-sm md:text-base leading-relaxed text-foreground/80">
               Hi, I'm Alyssa Li. I'm currently pursuing a master's in corporate communication at CUHK, graduating in October. I speak Mandarin, English and Korean — and I'm now learning Cantonese, slowly but surely.
             </p>

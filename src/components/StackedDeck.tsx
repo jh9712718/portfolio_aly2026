@@ -83,7 +83,7 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
           onClick={() => setSpread(false)}
         >
           <div
-            className="flex flex-col items-center gap-3 md:flex-row md:items-stretch md:gap-5 md:overflow-x-auto md:pb-4 md:pr-2"
+            className="mx-auto flex w-full max-w-[320px] flex-col items-stretch gap-3 md:max-w-none md:flex-row md:gap-5 md:overflow-x-auto md:pb-4 md:pr-2"
             onClick={(event) => event.stopPropagation()}
           >
             {cards.map((card, i) => (
@@ -98,7 +98,7 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
                 }}
                 whileHover={{ scale: 1.03, y: -4 }}
                 onClick={() => onCardClick(card.workKey)}
-                className="relative w-full max-w-[320px] rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
+                className="relative w-full rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
                 style={{
                   background: `hsl(var(${card.colorVar}))`,
                   boxShadow: "var(--shadow-card)",
