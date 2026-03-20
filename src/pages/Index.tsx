@@ -7,6 +7,7 @@ import CaseStudyOverlay from "@/components/CaseStudyOverlay";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 type Pose = "idle" | "pointing" | "curious" | "telescope" | "bow";
+type Lang = "en" | "zh-TW" | "zh-CN";
 
 const bezier = [0.16, 1, 0.3, 1] as const;
 const journeySteps = [
@@ -29,10 +30,61 @@ const moodStyles = {
   frustrated: { face: "×", color: "hsl(18 88% 45%)" },
 } as const;
 
+const localizedAbout = {
+  en: {
+    intro:
+      "Hi, I'm Alyssa Li. I'm currently pursuing a master's in corporate communication at CUHK, graduating in October. I speak Mandarin, English and Korean — and I'm now learning Cantonese, slowly but surely.",
+    body:
+      "For me, to create is to notice something others walk past, and make it impossible to ignore through imagination and practice. I've worked as a PR practitioner, a self-taught designer and a video editor — shaping corporate messages, telling stories through news, and building visual identity for events. These days I'm also learning data analytics and visualisation through Python, with the help of my AI friend. If that's your world too, I'd love to talk. :)",
+    quote:
+      "\"To travel and to idle, to contemplate the future or the past of the world, to dream over books and loiter at street corners, and let the line of thought dip deep into the stream.\"",
+    quoteBy: "— Virginia Woolf",
+    closing: "That restlessness — I think it's why I keep learning and exploring.",
+  },
+  "zh-CN": {
+    intro:
+      "Hi! 我是李虹文婧 , Alyssa！ 我本科毕业于武汉大学，目前在香港中文大学攻读企业传播硕士，将于今年的 10 月毕业。",
+    body:
+      "对我来说，创造意味着留意那些常被旁人略过的细节，并通过想象力与实践，让它们变得无法被忽视。无论是平面设计、影片拍摄、用户体验与交互，还是策划一场 Campaign，对我而言都是创造的过程。尽管策划一场活动需要数月的筹备，但它为我带来的成就感和兴奋感是无与伦比的。",
+    body2:
+      "在过去的实习经历中，我做过媒体，为外企做过公关，也参与过企业文化的传播。在三座不同的城市辗转，我不断尝试并确立自己的位置。",
+    body3:
+      "从用短视频讲述新闻故事开始，我用文字、视觉以及跨语言的讲述能力，搭建起一个个属于不同行业、不同企业的故事，步履不停地去探索新的边界。最近，在我的“AI 朋友”的帮助下，我也开始通过 Python 学习数据分析与可视化。如果你也对这些领域感兴趣或有经验，随时欢迎交流。:)",
+    quote:
+      "“去旅行，去闲晃，去沉思世界的过去与未来，在书卷中做梦，在街角徘徊，让思绪深深沉入溪流之中。”",
+    quoteBy: "—— 弗吉尼亚·伍尔夫",
+    closing:
+      "这种内心的渴望，为我注入源源不断的能量，让我不断地去学习、了解、实践，最终去创造。",
+  },
+  "zh-TW": {
+    intro:
+      "Hi! 我是Alyssa （李虹文婧）！我目前在香港中文大學攻讀企業傳播碩士，預計將於今年的 10 月畢業。",
+    body:
+      "對我來說，創造意味著留意那些常被旁人略過的細節，並透過想像力與實踐，讓它們變得無法被忽視。不管是平面設計、影片拍攝、用戶體驗與互動設計，還是策劃一場 Campaign，對我而言都是創造的過程。儘管籌備一場活動需要數月的時間，但它為我帶來的成就感和興奮感是無與倫比的。",
+    body2:
+      "在過去的實習經驗中，我做過媒體，為跨國企業做過公關，也參與過企業文化的傳播。在三座不同的城市輾轉，我持續嘗試並確立自己的位置。",
+    body3:
+      "從用短片講述新聞故事開始，我用文字、視覺以及跨語言的溝通能力，搭建起一個個屬於不同行業、不同企業的故事，步履不停地去探索新的邊界。最近，在我的「AI 朋友」的幫助下，我也開始透過 Python 進行數據分析與視覺化的實踐。如果你也對這些領域感興趣，隨時歡迎交流。:)",
+    quote:
+      "「去旅行，去閒晃，去沉思世界的過去與未來，在書卷中作夢，在街角徘徊，讓思緒深深沉入溪流之中。」",
+    quoteBy: "—— 維吉尼亞·吳爾芙",
+    closing:
+      "這種內心的渴望，為我注入源源不絕的動力，讓我持續地去學習、探索、實踐，最終去創造。",
+  },
+} as const;
+
+const localizedProgress = {
+  en: "Optimizing KeeTa's UI/UX to drive monthly order frequency by resolving friction in the consumer journey. This conceptual redesign reduces decision fatigue through a streamlined coupon interface, integrates gamified reward mechanics, and introduces an interactive digital mascot to foster long-term brand loyalty.",
+  "zh-CN":
+    "优化 KeeTa 的 UI/UX 设计，通过消除用户旅程中的体验痛点，有效提升月活率与点单频次。在此次概念性重设计中，我们精简了主页界面（如整合优惠券与自提入口）以降低用户的“决策疲劳”；同时引入游戏化奖励机制与专属数字宠物，通过高频互动逐步建立长期的品牌忠诚度。",
+  "zh-TW":
+    "優化 KeeTa 的使用者介面 (UI/UX)，透過解決消費者旅程中的痛點，以提升每月下單頻率。此概念性重塑設計，透過簡化的優惠券介面減輕決策疲勞，並整合遊戲化獎勵機制，以及引入互動式數碼吉祥物，以培養長期的品牌忠誠度。",
+} as const;
+
 const Index = () => {
   const [activePose, setActivePose] = useState<Pose>("idle");
   const [selectedWork, setSelectedWork] = useState<string | null>(null);
-  const [currentLang, setCurrentLang] = useState<"en" | "zh-TW" | "zh-CN">("en");
+  const [currentLang, setCurrentLang] = useState<Lang>("en");
 
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -68,50 +120,16 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
+  const aboutCopy = localizedAbout[currentLang];
+  const localeBodyStyle =
+    currentLang === "en"
+      ? undefined
+      : currentLang === "zh-CN"
+        ? { fontFamily: "'PingFang SC', 'Microsoft YaHei', sans-serif", fontWeight: 400 }
+        : { fontFamily: "'PingFang HK', 'PingFang TC', 'Microsoft JhengHei', sans-serif", fontWeight: 400 };
+
   return (
     <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/20">
-      <div className="fixed top-5 right-6 z-[100]">
-        <div className="flex overflow-hidden rounded-[20px] border border-[#D4C9B8] bg-[rgba(244,241,236,0.85)] backdrop-blur-[8px]">
-          {[
-            { label: "EN", value: "en" as const },
-            { label: "繁體", value: "zh-TW" as const },
-            { label: "简体", value: "zh-CN" as const },
-          ].map((option, index, array) => {
-            const isActive = currentLang === option.value;
-
-            return (
-              <button
-                key={option.value}
-                type="button"
-                data-lang={option.value}
-                onClick={() => setCurrentLang(option.value)}
-                className="font-body text-[12px] px-[14px] py-[6px] border-none cursor-pointer transition-all duration-150 ease-out"
-                style={{
-                  fontWeight: isActive ? 500 : 400,
-                  background: isActive ? "#1A1714" : "transparent",
-                  color: isActive ? "#ffffff" : "#8A8579",
-                  borderRight: index === array.length - 1 ? "none" : "0.5px solid #D4C9B8",
-                }}
-                onMouseEnter={(event) => {
-                  if (!isActive) {
-                    event.currentTarget.style.background = "rgba(212, 201, 184, 0.4)";
-                    event.currentTarget.style.color = "#1A1714";
-                  }
-                }}
-                onMouseLeave={(event) => {
-                  if (!isActive) {
-                    event.currentTarget.style.background = "transparent";
-                    event.currentTarget.style.color = "#8A8579";
-                  }
-                }}
-              >
-                {option.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Character - fixed on desktop, hidden on mobile */}
       <div className="hidden lg:block fixed right-12 bottom-16 z-40">
         <motion.div
@@ -126,6 +144,36 @@ const Index = () => {
 
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6">
+      <div className="absolute top-5 right-6 z-[100]">
+        <div className="flex overflow-hidden rounded-[20px] border border-[#D4C9B8] bg-[rgba(244,241,236,0.85)] backdrop-blur-[8px]">
+          {[
+            { label: "EN", value: "en" as const },
+            { label: "繁體", value: "zh-TW" as const },
+            { label: "简体", value: "zh-CN" as const },
+          ].map((option, index, array) => {
+            const isActive = currentLang === option.value;
+
+            return (
+              <button
+                key={option.value}
+                type="button"
+                data-lang={option.value}
+                onClick={() => setCurrentLang(option.value)}
+                className={`font-body text-[12px] px-[14px] py-[6px] border-none cursor-pointer transition-all duration-150 ease-out ${
+                  isActive
+                    ? "bg-[#1A1714] text-white font-medium"
+                    : "bg-transparent text-[#8A8579] font-normal hover:bg-[rgba(212,201,184,0.4)] hover:text-[#1A1714]"
+                }`}
+                style={{
+                  borderRight: index === array.length - 1 ? "none" : "0.5px solid #D4C9B8",
+                }}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
       <div className="text-center max-w-2xl">
           <motion.h1
             initial={{ opacity: 0 }}
@@ -186,22 +234,32 @@ const Index = () => {
                 className="w-28 h-28 rounded-full object-cover border border-border"
               />
             </div>
-            <p className="text-sm md:text-base leading-relaxed text-foreground/80">
-              Hi, I'm Alyssa Li. I'm currently pursuing a master's in corporate communication at CUHK, graduating in October. I speak Mandarin, English and Korean — and I'm now learning Cantonese, slowly but surely.
+            <p className="text-sm md:text-base leading-relaxed text-foreground/80" style={localeBodyStyle}>
+              {aboutCopy.intro}
             </p>
-            <p className="text-sm md:text-base leading-relaxed text-foreground/80">
-              For me, to create is to notice something others walk past, and make it impossible to ignore through imagination and practice. I've worked as a PR practitioner, a self-taught designer and a video editor — shaping corporate messages, telling stories through news, and building visual identity for events. These days I'm also learning data analytics and visualisation through Python, with the help of my AI friend. If that's your world too, I'd love to talk. :)
+            <p className="text-sm md:text-base leading-relaxed text-foreground/80" style={localeBodyStyle}>
+              {aboutCopy.body}
             </p>
-          <blockquote className="border-l-2 border-primary pl-5">
-              <p className="italic text-[17px] leading-relaxed font-display text-muted-foreground">
-                "To travel and to idle, to contemplate the future or the past of the world, to dream over books and loiter at street corners, and let the line of thought dip deep into the stream."
+            {"body2" in aboutCopy && (
+              <p className="text-sm md:text-base leading-relaxed text-foreground/80" style={localeBodyStyle}>
+                {aboutCopy.body2}
               </p>
-              <span className="block mt-2 uppercase tracking-[0.08em] font-body font-light text-[11px] text-muted-foreground">
-                — Virginia Woolf
+            )}
+            {"body3" in aboutCopy && (
+              <p className="text-sm md:text-base leading-relaxed text-foreground/80" style={localeBodyStyle}>
+                {aboutCopy.body3}
+              </p>
+            )}
+          <blockquote className="border-l-2 border-primary pl-5">
+              <p className="italic text-[17px] leading-relaxed font-display text-muted-foreground" style={currentLang === "en" ? undefined : localeBodyStyle}>
+                {aboutCopy.quote}
+              </p>
+              <span className="block mt-2 uppercase tracking-[0.08em] font-body font-light text-[11px] text-muted-foreground" style={currentLang === "en" ? undefined : localeBodyStyle}>
+                {aboutCopy.quoteBy}
               </span>
             </blockquote>
-            <p className="text-sm md:text-base leading-relaxed text-foreground/80">
-              That restlessness — I think it's why I keep learning and exploring.
+            <p className="text-sm md:text-base leading-relaxed text-foreground/80" style={localeBodyStyle}>
+              {aboutCopy.closing}
             </p>
           </div>
           <div className="hidden md:flex flex-col items-center gap-2 pt-1">
@@ -244,8 +302,8 @@ const Index = () => {
           <h3 className="font-display text-2xl md:text-3xl tracking-display mt-3 mb-4 max-w-2xl">
             UX/UI Optimization for Keeta
           </h3>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
-            Optimizing KeeTa&apos;s UI/UX to drive monthly order frequency by resolving friction in the consumer journey. This conceptual redesign reduces decision fatigue through a streamlined coupon interface, integrates gamified reward mechanics, and introduces an interactive digital mascot to foster long-term brand loyalty.
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl" style={localeBodyStyle}>
+            {localizedProgress[currentLang]}
           </p>
           <div className="mt-8 rounded-xl border border-border/70 bg-background/40 p-4 md:p-5 overflow-x-auto">
             <div className="relative min-w-[720px] h-[180px]">
@@ -385,6 +443,7 @@ const Index = () => {
       <CaseStudyOverlay
         title={selectedWork}
         onClose={() => setSelectedWork(null)}
+        currentLang={currentLang}
       />
     </div>
   );

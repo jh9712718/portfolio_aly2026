@@ -38,10 +38,12 @@ import dataImage1 from "../../image assets_added for codex refinement/d1.png";
 import dataImage2 from "../../image assets_added for codex refinement/d2.png";
 
 const bezier = [0.16, 1, 0.3, 1] as const;
+type Lang = "en" | "zh-TW" | "zh-CN";
 
 interface CaseStudyOverlayProps {
   title: string | null;
   onClose: () => void;
+  currentLang: Lang;
 }
 
 interface OverlayImageCardProps {
@@ -51,36 +53,51 @@ interface OverlayImageCardProps {
   onOpen: (src: string, alt: string) => void;
 }
 
-const workDetails: Record<string, { color: string; role: string; description: string }> = {
+const workDetails: Record<string, { color: string; role: string; descriptions: Record<Lang, string> }> = {
   "Graphic Design": {
     color: "hsl(var(--terracotta))",
     role: "Exploring designer",
-    description:
-      "Designing compelling visual collateral from event posters to presentation decks, maintaining a consistent brand identity to deliver clean and functional multimedia content.",
+    descriptions: {
+      en: "Designing compelling visual collateral from event posters to presentation decks, maintaining a consistent brand identity to deliver clean and functional multimedia content.",
+      "zh-CN": "负责从活动海报到演示文稿等核心视觉物料的设计。在保持品牌视觉形象高度统一的同时，以简洁、实用的多媒体内容赋能线下活动，精准传达品牌价值。",
+      "zh-TW": "設計具吸引力的視覺宣傳品，由活動海報到演示文稿等，維持統一的品牌形象，以提供簡潔實用的多媒體內容。",
+    },
   },
   "Campaign Planning": {
     color: "hsl(var(--sage))",
     role: "Campaign Strategist & Designer",
-    description:
-      "Leveraging market research and consumer insights to design integrated marketing campaigns, coordinating cross-channel strategies to elevate brand visibility and audience engagement.",
+    descriptions: {
+      en: "Leveraging market research and consumer insights to design integrated marketing campaigns, coordinating cross-channel strategies to elevate brand visibility and audience engagement.",
+      "zh-CN": "基于市场调研与消费者洞察，策划并执行整合营销方案。统筹线上线下跨渠道战略，有效提升品牌曝光度与目标受众参与度。",
+      "zh-TW": "善用市場調研及消費者洞察，策劃整合營銷活動，協調跨渠道策略，有效提升品牌知名度及受眾參與度。",
+    },
   },
   "Video Editing": {
     color: "hsl(var(--slate))",
     role: "Video Editor & Motion Designer",
-    description:
-      "Scripting, curating, and editing dynamic short-form video content for social media platforms, focusing on engaging visual storytelling to capture continuous viewership and interaction.",
+    descriptions: {
+      en: "Scripting, curating, and editing dynamic short-form video content for social media platforms, focusing on engaging visual storytelling to capture continuous viewership and interaction.",
+      "zh-CN": "负责社交媒体短视频的策划、脚本撰写及后期剪辑，专注于打造高互动率的视觉叙事内容。从抖音、视频号矩阵到企业活动主题片，我始终致力于用动态影像讲述更具感染力、真实可感的品牌故事。",
+      "zh-TW": "為社交媒體平台編寫劇本、策劃及剪輯充滿活力的短片內容，專注於引人入勝的視覺敘事，以持續吸引觀看及互動。",
+    },
   },
   "Data Analytics": {
     color: "hsl(var(--warm-black))",
     role: "Business Operation and Customer Analytics",
-    description:
-      "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
+    descriptions: {
+      en: "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
+      "zh-CN": "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
+      "zh-TW": "Process and analyze data by Excel, SQL and Python to uncover the dynamics of business operation and customer dynamics.",
+    },
   },
   "Event Management": {
     color: "hsl(var(--dusty-rose))",
     role: "Project Manager & Coordinator",
-    description:
-      "Planning and executing events from end to end, managing logistics, vendors, and creative direction to deliver memorable experiences.",
+    descriptions: {
+      en: "Planning and executing events from end to end, managing logistics, vendors, and creative direction to deliver memorable experiences.",
+      "zh-CN": "统筹活动的全流程策划与落地执行。全面管理创意方向（如物料设计与影片拍摄）、后勤调配及第三方供应商对接，为受众打造令人难忘的品牌体验。",
+      "zh-TW": "策劃及統籌活動的全部流程，管理物流、供應商及創意方向，以提供難忘的體驗。",
+    },
   },
 };
 
@@ -116,9 +133,10 @@ const OverlayImageCard: React.FC<OverlayImageCardProps> = ({
   </button>
 );
 
-const CaseStudyOverlay: React.FC<CaseStudyOverlayProps> = ({ title, onClose }) => {
+const CaseStudyOverlay: React.FC<CaseStudyOverlayProps> = ({ title, onClose, currentLang }) => {
   const details = title ? workDetails[title] : null;
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const localizedDescription = details ? details.descriptions[currentLang] : "";
 
   return (
     <AnimatePresence>
@@ -166,7 +184,7 @@ const CaseStudyOverlay: React.FC<CaseStudyOverlayProps> = ({ title, onClose }) =
 
               {title !== "Data Analytics" && (
                 <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
-                  {details.description}
+                  {localizedDescription}
                 </p>
               )}
 
