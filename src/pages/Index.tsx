@@ -32,6 +32,7 @@ const moodStyles = {
 const Index = () => {
   const [activePose, setActivePose] = useState<Pose>("idle");
   const [selectedWork, setSelectedWork] = useState<string | null>(null);
+  const [currentLang, setCurrentLang] = useState<"en" | "zh-TW" | "zh-CN">("en");
 
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -69,6 +70,48 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/20">
+      <div className="fixed top-5 right-6 z-[100]">
+        <div className="flex overflow-hidden rounded-[20px] border border-[#D4C9B8] bg-[rgba(244,241,236,0.85)] backdrop-blur-[8px]">
+          {[
+            { label: "EN", value: "en" as const },
+            { label: "繁體", value: "zh-TW" as const },
+            { label: "简体", value: "zh-CN" as const },
+          ].map((option, index, array) => {
+            const isActive = currentLang === option.value;
+
+            return (
+              <button
+                key={option.value}
+                type="button"
+                data-lang={option.value}
+                onClick={() => setCurrentLang(option.value)}
+                className="font-body text-[12px] px-[14px] py-[6px] border-none cursor-pointer transition-all duration-150 ease-out"
+                style={{
+                  fontWeight: isActive ? 500 : 400,
+                  background: isActive ? "#1A1714" : "transparent",
+                  color: isActive ? "#ffffff" : "#8A8579",
+                  borderRight: index === array.length - 1 ? "none" : "0.5px solid #D4C9B8",
+                }}
+                onMouseEnter={(event) => {
+                  if (!isActive) {
+                    event.currentTarget.style.background = "rgba(212, 201, 184, 0.4)";
+                    event.currentTarget.style.color = "#1A1714";
+                  }
+                }}
+                onMouseLeave={(event) => {
+                  if (!isActive) {
+                    event.currentTarget.style.background = "transparent";
+                    event.currentTarget.style.color = "#8A8579";
+                  }
+                }}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Character - fixed on desktop, hidden on mobile */}
       <div className="hidden lg:block fixed right-12 bottom-16 z-40">
         <motion.div
