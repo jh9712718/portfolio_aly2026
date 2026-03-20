@@ -109,18 +109,20 @@ const Index = () => {
             <Character pose="idle" className="w-10 h-14 mx-auto opacity-40 lg:hidden" />
           </motion.div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 0.7, y: [0, 8, 0] }}
-          transition={{ delay: 1.2, duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-foreground/55"
-          aria-hidden="true"
-        >
-          <svg width="54" height="42" viewBox="0 0 54 42" fill="none">
-            <path d="M6 6L27 24L48 6" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M6 18L27 36L48 18" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
+        <div className="absolute inset-x-0 bottom-10 flex justify-center pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 0.7, y: [0, 8, 0] }}
+            transition={{ delay: 1.2, duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className="text-foreground/55"
+            aria-hidden="true"
+          >
+            <svg width="54" height="42" viewBox="0 0 54 42" fill="none">
+              <path d="M6 6L27 24L48 6" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M6 18L27 36L48 18" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </motion.div>
+        </div>
       </section>
 
       {/* ─── ABOUT ─── */}
