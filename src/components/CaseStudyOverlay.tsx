@@ -352,7 +352,7 @@ const CaseStudyOverlay: React.FC<CaseStudyOverlayProps> = ({ title, onClose, cur
                 <>
                   {/* Module 1 */}
                   <div className="space-y-3">
-                    <h3 className="font-display text-lg tracking-display">10th CSR Forum, CUHK, 2026</h3>
+                    <h3 className="font-display text-lg tracking-display">10th CSR Forum CUHK 2026</h3>
                     <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mr-8 md:-mr-10">
                       {[csrForum1, csrForum2, csrForum3, csrForum4].map((src, i) => (
                         <OverlayImageCard key={src} src={src} alt={`CSR Forum ${i + 1}`} onOpen={(imageSrc, imageAlt) => setSelectedImage({ src: imageSrc, alt: imageAlt })} />

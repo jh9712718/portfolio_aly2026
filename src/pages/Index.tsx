@@ -300,7 +300,7 @@ const Index = () => {
             </span>
           </div>
           <h3 className="font-display text-2xl md:text-3xl tracking-display mt-3 mb-4 max-w-2xl">
-            UX/UI Optimization for Keeta
+            UX/UI Optimization for KeeTa
           </h3>
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl" style={localeBodyStyle}>
             {localizedProgress[currentLang]}
