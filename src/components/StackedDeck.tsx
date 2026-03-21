@@ -98,7 +98,7 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
                 }}
                 whileHover={{ scale: 1.03, y: -4 }}
                 onClick={() => onCardClick(card.workKey)}
-                className="relative w-full max-w-[340px] rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
+                className="relative w-[320px] max-w-full rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
                 style={{
                   background: `hsl(var(${card.colorVar}))`,
                   boxShadow: "var(--shadow-card)",
