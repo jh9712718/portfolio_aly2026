@@ -83,35 +83,37 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
           onClick={() => setSpread(false)}
         >
           <div
-            className="mx-auto flex w-full flex-col items-center justify-center gap-4 px-4 md:px-0 md:grid md:w-max md:grid-flow-col md:auto-cols-[280px] md:gap-5 md:overflow-x-auto md:pb-4"
+            className="w-full md:overflow-x-auto md:scrollbar-hide"
             onClick={(event) => event.stopPropagation()}
           >
-            {cards.map((card, i) => (
-              <motion.div
-                key={card.workKey}
-                initial={{ opacity: 0, scale: 0.85, rotate: stackOffsets[i].rotate }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.07,
-                  ease: [0.4, 0, 0.2, 1],
-                }}
-                whileHover={{ scale: 1.03, y: -4 }}
-                onClick={() => onCardClick(card.workKey)}
-                className="relative w-[320px] max-w-full rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
-                style={{
-                  background: `hsl(var(${card.colorVar}))`,
-                  boxShadow: "var(--shadow-card)",
-                }}
-              >
-                <span className="text-[10px] tracking-label uppercase text-primary-foreground/65 font-body pl-0.5">
-                  {card.label}
-                </span>
-                <span className="font-display text-[1.9rem] md:text-[2rem] text-primary-foreground leading-[1.05] max-w-[8.6ch] pl-0.5">
-                  {card.mainText}
-                </span>
-              </motion.div>
-            ))}
+            <div className="mx-auto flex w-full flex-col items-center justify-center gap-4 px-4 md:w-max md:flex-row md:gap-5 md:px-0 md:pb-4">
+              {cards.map((card, i) => (
+                <motion.div
+                  key={card.workKey}
+                  initial={{ opacity: 0, scale: 0.85, rotate: stackOffsets[i].rotate }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: i * 0.07,
+                    ease: [0.4, 0, 0.2, 1],
+                  }}
+                  whileHover={{ scale: 1.03, y: -4 }}
+                  onClick={() => onCardClick(card.workKey)}
+                  className="relative w-[320px] max-w-full rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
+                  style={{
+                    background: `hsl(var(${card.colorVar}))`,
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                >
+                  <span className="text-[10px] tracking-label uppercase text-primary-foreground/65 font-body pl-0.5">
+                    {card.label}
+                  </span>
+                  <span className="font-display text-[1.9rem] md:text-[2rem] text-primary-foreground leading-[1.05] max-w-[8.6ch] pl-0.5">
+                    {card.mainText}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
           <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[10px] tracking-label uppercase text-muted-foreground font-body">
             Tap to restack
