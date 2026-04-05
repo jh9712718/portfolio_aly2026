@@ -284,92 +284,121 @@ const Index = () => {
       {/* ─── IN PROGRESS ─── */}
       <section ref={progressRef} className="px-6 md:px-12 lg:px-24 py-20 md:py-32 max-w-5xl mx-auto">
         <SectionLabel number="04" title="In Progress" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: bezier }}
-          className="border border-border rounded-xl p-6 md:p-10 bg-card"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <span className="text-[10px] tracking-label uppercase text-muted-foreground">
-              Expected · April 2026
-            </span>
-            <span className="text-[10px] tracking-label uppercase text-muted-foreground text-right pt-0.5">
-              Class Project
-            </span>
-          </div>
-          <h3 className="font-display text-2xl md:text-3xl tracking-display mt-3 mb-4 max-w-2xl">
-            UX/UI Optimization for KeeTa
-          </h3>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl" style={localeBodyStyle}>
-            {localizedProgress[currentLang]}
-          </p>
-          <div className="mt-8 rounded-xl border border-border/70 bg-background/40 p-4 md:p-5 overflow-x-auto">
-            <div className="relative min-w-[720px] h-[180px]">
-              <svg
-                viewBox="0 0 720 180"
-                className="absolute inset-0 w-full h-full"
-                aria-hidden="true"
-              >
-                {journeySteps.map((step, i) => (
-                  <g key={`lane-${i}`}>
-                    <rect
-                      x={i * 72 + 8}
-                      y={8}
-                      width={56}
-                      height={164}
-                      rx={14}
-                      fill="hsl(var(--foreground) / 0.08)"
-                    />
-                    <rect
-                      x={i * 72 + 8}
-                      y={8}
-                      width={56}
-                      height={14}
-                      rx={8}
-                      fill="hsl(var(--terracotta))"
-                    />
-                  </g>
-                ))}
-                <path
-                  d={journeySteps
-                    .map((step, i) => `${i === 0 ? "M" : "L"} ${i * 72 + 36} ${step.y + 20}`)
-                    .join(" ")}
-                  fill="none"
-                  stroke="hsl(var(--foreground) / 0.7)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeDasharray="7 10"
-                />
-              </svg>
-              {journeySteps.map((step, i) => {
-                const mood = moodStyles[step.mood];
-
-                return (
-                  <motion.div
-                    key={`mood-${i}`}
-                    initial={{ opacity: 0, scale: 0.8, y: 8 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: i * 0.06, ease: bezier }}
-                    className="absolute flex items-center justify-center rounded-full text-xl md:text-2xl shadow-sm"
-                    style={{
-                      left: `${i * 72 + 16}px`,
-                      top: `${step.y}px`,
-                      width: 40,
-                      height: 40,
-                      background: mood.color,
-                      color: "rgba(20, 20, 20, 0.72)",
-                    }}
-                  >
-                    {mood.face}
-                  </motion.div>
-                );
-              })}
+        <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: bezier }}
+            className="border border-border rounded-xl p-6 md:p-10 bg-card"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <span className="text-[10px] tracking-label uppercase text-muted-foreground">
+                Expected · April 2026
+              </span>
+              <span className="text-[10px] tracking-label uppercase text-muted-foreground text-right pt-0.5">
+                Class Project
+              </span>
             </div>
-          </div>
-        </motion.div>
+            <h3 className="font-display text-2xl md:text-3xl tracking-display mt-3 mb-4 max-w-2xl">
+              UX/UI Optimization for KeeTa
+            </h3>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl" style={localeBodyStyle}>
+              {localizedProgress[currentLang]}
+            </p>
+            <div className="mt-8 rounded-xl border border-border/70 bg-background/40 p-4 md:p-5 overflow-x-auto">
+              <div className="relative min-w-[720px] h-[180px]">
+                <svg
+                  viewBox="0 0 720 180"
+                  className="absolute inset-0 w-full h-full"
+                  aria-hidden="true"
+                >
+                  {journeySteps.map((step, i) => (
+                    <g key={`lane-${i}`}>
+                      <rect
+                        x={i * 72 + 8}
+                        y={8}
+                        width={56}
+                        height={164}
+                        rx={14}
+                        fill="hsl(var(--foreground) / 0.08)"
+                      />
+                      <rect
+                        x={i * 72 + 8}
+                        y={8}
+                        width={56}
+                        height={14}
+                        rx={8}
+                        fill="hsl(var(--terracotta))"
+                      />
+                    </g>
+                  ))}
+                  <path
+                    d={journeySteps
+                      .map((step, i) => `${i === 0 ? "M" : "L"} ${i * 72 + 36} ${step.y + 20}`)
+                      .join(" ")}
+                    fill="none"
+                    stroke="hsl(var(--foreground) / 0.7)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeDasharray="7 10"
+                  />
+                </svg>
+                {journeySteps.map((step, i) => {
+                  const mood = moodStyles[step.mood];
+
+                  return (
+                    <motion.div
+                      key={`mood-${i}`}
+                      initial={{ opacity: 0, scale: 0.8, y: 8 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.45, delay: i * 0.06, ease: bezier }}
+                      className="absolute flex items-center justify-center rounded-full text-xl md:text-2xl shadow-sm"
+                      style={{
+                        left: `${i * 72 + 16}px`,
+                        top: `${step.y}px`,
+                        width: 40,
+                        height: 40,
+                        background: mood.color,
+                        color: "rgba(20, 20, 20, 0.72)",
+                      }}
+                    >
+                      {mood.face}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.08, ease: bezier }}
+            className="border border-border rounded-xl p-6 md:p-10 bg-card"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <span className="text-[10px] tracking-label uppercase text-muted-foreground">
+                In Progress
+              </span>
+              <span className="text-[10px] tracking-label uppercase text-muted-foreground text-right pt-0.5">
+                Campaign Planning
+              </span>
+            </div>
+            <h3 className="font-display text-2xl md:text-3xl tracking-display mt-3 mb-4 max-w-2xl">
+              Mother&apos;s Choice Trusted Adult Campagin Planning
+            </h3>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl" style={localeBodyStyle}>
+              {currentLang === "en"
+                ? "A work-in-progress campaign planning project for Mother's Choice focused on the Trusted Adult initiative."
+                : currentLang === "zh-CN"
+                  ? "这是一个进行中的 Mother's Choice Trusted Adult 项目 Campaign Planning 案例。"
+                  : "這是一個進行中的 Mother's Choice Trusted Adult 項目 Campaign Planning 案例。"}
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* ─── CONTACT ─── */}
