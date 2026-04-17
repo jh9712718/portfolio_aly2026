@@ -401,11 +401,11 @@ const Index = () => {
               </span>
             </div>
             <h3 className="font-display text-2xl md:text-3xl tracking-display mt-3 mb-4 max-w-2xl">
-              Mother&apos;s Choice Trusted Adult Campagin Planning
+              Mother&apos;s Choice TrustED Campaign
             </h3>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl" style={localeBodyStyle}>
               {currentLang === "en"
-                ? "A work-in-progress campaign planning project for Mother's Choice focused on the Trusted Adult initiative."
+                ? "In this campaign, we communicate the core message that education should not end for pregnant teenage girls. Targeting educators in underserved communities in Hong Kong, we developed an end-to-end integrated campaign spanning audience research, strategic planning, execution, and evaluation. The campaign includes a comic-style TVC, online training, a digital engagement platform, and an offline exhibition under the tagline “Let Her Voice Find Yours” and the Cantonese line “細細聲講 大大力撐”."
                 : currentLang === "zh-CN"
                   ? "这是一个进行中的 Mother's Choice Trusted Adult 项目 Campaign Planning 案例。"
                   : "這是一個進行中的 Mother's Choice Trusted Adult 項目 Campaign Planning 案例。"}
