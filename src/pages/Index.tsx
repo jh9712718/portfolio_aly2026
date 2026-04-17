@@ -5,6 +5,11 @@ import StackedDeck from "@/components/StackedDeck";
 import SectionLabel from "@/components/SectionLabel";
 import CaseStudyOverlay from "@/components/CaseStudyOverlay";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import mothersChoice1 from "../../MC /1.png";
+import mothersChoice2 from "../../MC /2.png";
+import mothersChoice3 from "../../MC /3.png";
+import mothersChoice4 from "../../MC /4.png";
+import mothersChoice5 from "../../MC /5.png";
 
 type Pose = "idle" | "pointing" | "curious" | "telescope" | "bow";
 type Lang = "en" | "zh-TW" | "zh-CN";
@@ -80,6 +85,14 @@ const localizedProgress = {
   "zh-TW":
     "優化 KeeTa 的使用者介面 (UI/UX)，透過解決消費者旅程中的痛點，以提升每月下單頻率。此概念性重塑設計，透過簡化的優惠券介面減輕決策疲勞，並整合遊戲化獎勵機制，以及引入互動式數碼吉祥物，以培養長期的品牌忠誠度。",
 } as const;
+
+const mothersChoiceGallery = [
+  mothersChoice1,
+  mothersChoice2,
+  mothersChoice3,
+  mothersChoice4,
+  mothersChoice5,
+] as const;
 
 const Index = () => {
   const [activePose, setActivePose] = useState<Pose>("idle");
@@ -397,6 +410,34 @@ const Index = () => {
                   ? "这是一个进行中的 Mother's Choice Trusted Adult 项目 Campaign Planning 案例。"
                   : "這是一個進行中的 Mother's Choice Trusted Adult 項目 Campaign Planning 案例。"}
             </p>
+            <div className="mt-6 md:mt-8">
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <span className="text-[10px] tracking-label uppercase text-muted-foreground">
+                  Visual Preview
+                </span>
+                <span className="text-[10px] tracking-label uppercase text-muted-foreground">
+                  Scroll to explore
+                </span>
+              </div>
+              <div className="relative">
+                <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                  {mothersChoiceGallery.map((imageSrc, index) => (
+                    <div
+                      key={imageSrc}
+                      className="min-w-[85%] md:min-w-[48%] lg:min-w-[38%] snap-start overflow-hidden rounded-2xl border border-border bg-background/70 shadow-[var(--shadow-card)]"
+                    >
+                      <img
+                        src={imageSrc}
+                        alt={`Mother's Choice campaign visual ${index + 1}`}
+                        className="h-64 md:h-80 w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-card via-card/75 to-transparent" />
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
