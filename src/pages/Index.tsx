@@ -424,14 +424,16 @@ const Index = () => {
                   {mothersChoiceGallery.map((imageSrc, index) => (
                     <div
                       key={imageSrc}
-                      className="min-w-[85%] md:min-w-[48%] lg:min-w-[38%] snap-start overflow-hidden rounded-2xl border border-border bg-background/70 shadow-[var(--shadow-card)]"
+                      className="min-w-[88%] md:min-w-[78%] lg:min-w-[72%] snap-start overflow-hidden rounded-2xl border border-border bg-[#f7f3ed] shadow-[var(--shadow-card)]"
                     >
-                      <img
-                        src={imageSrc}
-                        alt={`Mother's Choice campaign visual ${index + 1}`}
-                        className="h-64 md:h-80 w-full object-cover"
-                        loading="lazy"
-                      />
+                      <div className="aspect-[16/9] w-full p-4 md:p-5">
+                        <img
+                          src={imageSrc}
+                          alt={`Mother's Choice campaign visual ${index + 1}`}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
