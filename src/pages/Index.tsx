@@ -455,20 +455,20 @@ const Index = () => {
           className="space-y-6"
         >
           <svg width="120" height="88" viewBox="0 0 120 88" className="mx-auto opacity-50">
-            <circle cx="22" cy="12" r="8" fill="none" stroke="hsl(var(--warm-black))" strokeWidth="1.5"/>
-            <line x1="22" y1="20" x2="22" y2="52" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="22" y1="30" x2="12" y2="42" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="22" y1="30" x2="44" y2="44" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="22" y1="52" x2="14" y2="70" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="22" y1="52" x2="30" y2="70" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
+            <circle cx="22" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+            <line x1="22" y1="20" x2="22" y2="52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="22" y1="30" x2="12" y2="42" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="22" y1="30" x2="44" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="22" y1="52" x2="14" y2="70" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="22" y1="52" x2="30" y2="70" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             <ellipse cx="60" cy="44" rx="7" ry="5" fill="none" stroke="hsl(var(--terracotta))" strokeWidth="1.5"/>
             <line x1="55" y1="42" x2="65" y2="42" stroke="hsl(var(--terracotta))" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
-            <circle cx="98" cy="12" r="8" fill="none" stroke="hsl(var(--warm-black))" strokeWidth="1.5"/>
-            <line x1="98" y1="20" x2="98" y2="52" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="98" y1="30" x2="108" y2="42" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="98" y1="30" x2="76" y2="44" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="98" y1="52" x2="90" y2="70" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
-            <line x1="98" y1="52" x2="106" y2="70" stroke="hsl(var(--warm-black))" strokeWidth="1.5" strokeLinecap="round"/>
+            <circle cx="98" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+            <line x1="98" y1="20" x2="98" y2="52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="98" y1="30" x2="108" y2="42" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="98" y1="30" x2="76" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="98" y1="52" x2="90" y2="70" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <line x1="98" y1="52" x2="106" y2="70" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             <line x1="8" y1="78" x2="112" y2="78" stroke="hsl(var(--sand))" strokeWidth="0.5" strokeLinecap="round"/>
           </svg>
           <h3 className="font-display text-3xl md:text-4xl tracking-display">
