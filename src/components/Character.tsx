@@ -8,7 +8,7 @@ interface CharacterProps {
 }
 
 const Character: React.FC<CharacterProps> = ({ pose, className = "" }) => {
-  const stroke = "hsl(var(--warm-black))";
+  const stroke = "currentColor";
   const sw = 1.5;
 
   const poses: Record<Pose, React.ReactNode> = {
