@@ -158,7 +158,7 @@ const Index = () => {
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6">
       <div className="absolute top-5 right-6 z-[100]">
-        <div className="flex overflow-hidden rounded-[20px] border border-[#D4C9B8] bg-[rgba(244,241,236,0.85)] backdrop-blur-[8px]">
+        <div className="flex overflow-hidden rounded-[20px] border border-border bg-card/85 backdrop-blur-[8px]">
           {[
             { label: "EN", value: "en" as const },
             { label: "繁體", value: "zh-TW" as const },
@@ -174,11 +174,11 @@ const Index = () => {
                 onClick={() => setCurrentLang(option.value)}
                 className={`font-body text-[12px] px-[14px] py-[6px] border-none cursor-pointer transition-all duration-150 ease-out ${
                   isActive
-                    ? "bg-[#1A1714] text-white font-medium"
-                    : "bg-transparent text-[#8A8579] font-normal hover:bg-[rgba(212,201,184,0.4)] hover:text-[#1A1714]"
+                    ? "bg-foreground text-background font-medium"
+                    : "bg-transparent text-muted-foreground font-normal hover:bg-primary/25 hover:text-foreground"
                 }`}
                 style={{
-                  borderRight: index === array.length - 1 ? "none" : "0.5px solid #D4C9B8",
+                  borderRight: index === array.length - 1 ? "none" : "0.5px solid hsl(var(--border))",
                 }}
               >
                 {option.label}
@@ -424,7 +424,7 @@ const Index = () => {
                   {mothersChoiceGallery.map((imageSrc, index) => (
                     <div
                       key={imageSrc}
-                      className="min-w-[88%] md:min-w-[78%] lg:min-w-[72%] snap-start overflow-hidden rounded-2xl border border-border bg-[#f7f3ed] shadow-[var(--shadow-card)]"
+                      className="min-w-[88%] md:min-w-[78%] lg:min-w-[72%] snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]"
                     >
                       <div className="aspect-[16/9] w-full p-4 md:p-5">
                         <img
