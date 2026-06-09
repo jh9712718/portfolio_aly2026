@@ -12,13 +12,13 @@ interface FlashcardProps {
   onClick?: () => void;
 }
 
-const colorMap: Record<string, string> = {
-  terracotta: "hsl(var(--terracotta))",
-  sage: "hsl(var(--sage))",
-  slate: "hsl(var(--slate))",
-  "dusty-rose": "hsl(var(--dusty-rose))",
-  sand: "hsl(var(--warm-sand))",
-  night: "hsl(var(--warm-black))",
+const colorMap: Record<string, { bg: string; ink: string; inkVar: string }> = {
+  terracotta: { bg: "hsl(var(--terracotta))", ink: "hsl(var(--warm-black))", inkVar: "--warm-black" },
+  sage: { bg: "hsl(var(--sage))", ink: "hsl(var(--cream))", inkVar: "--cream" },
+  slate: { bg: "hsl(var(--slate))", ink: "hsl(var(--cream))", inkVar: "--cream" },
+  "dusty-rose": { bg: "hsl(var(--dusty-rose))", ink: "hsl(var(--cream))", inkVar: "--cream" },
+  sand: { bg: "hsl(var(--warm-sand))", ink: "hsl(var(--warm-black))", inkVar: "--warm-black" },
+  night: { bg: "hsl(var(--warm-black))", ink: "hsl(var(--cream))", inkVar: "--cream" },
 };
 
 const Flashcard: React.FC<FlashcardProps> = ({
@@ -31,7 +31,7 @@ const Flashcard: React.FC<FlashcardProps> = ({
   disabled = false,
   onClick,
 }) => {
-  const bg = colorMap[colorClass] || colorMap.terracotta;
+  const palette = colorMap[colorClass] || colorMap.terracotta;
 
   return (
     <motion.div
@@ -41,23 +41,33 @@ const Flashcard: React.FC<FlashcardProps> = ({
       onClick={disabled ? undefined : onClick}
       className="relative rounded-xl p-5 min-h-[140px] md:min-h-[160px] overflow-hidden border border-foreground/5"
       style={{
-        background: bg,
+        background: palette.bg,
+        color: palette.ink,
         opacity: disabled ? 0.3 : 1,
         cursor: disabled ? "default" : "pointer",
       }}
     >
       {comingSoon && (
-        <span className="absolute top-3 right-3 text-[9px] tracking-label uppercase text-primary-foreground/60 bg-primary-foreground/15 px-2 py-1 rounded-full border border-primary-foreground/30">
+        <span
+          className="absolute top-3 right-3 text-[9px] tracking-label uppercase opacity-60 px-2 py-1 rounded-full border"
+          style={{
+            backgroundColor: `hsl(var(${palette.inkVar}) / 0.14)`,
+            borderColor: `hsl(var(${palette.inkVar}) / 0.3)`,
+          }}
+        >
           {comingSoon}
         </span>
       )}
-      <div className="text-[10px] tracking-label uppercase text-primary-foreground/65 mb-1.5">
+      <div className="text-[10px] tracking-label uppercase opacity-65 mb-1.5">
         {label}
       </div>
-      <div className="font-display text-base md:text-lg text-primary-foreground leading-tight">
+      <div className="font-display text-base md:text-lg leading-tight">
         {title}
       </div>
-      <span className="absolute bottom-3 right-3 text-[9px] tracking-label uppercase text-primary-foreground/50 bg-primary-foreground/10 px-2 py-1 rounded-full">
+      <span
+        className="absolute bottom-3 right-3 text-[9px] tracking-label uppercase opacity-50 px-2 py-1 rounded-full"
+        style={{ backgroundColor: `hsl(var(${palette.inkVar}) / 0.12)` }}
+      >
         {tag}
       </span>
     </motion.div>
