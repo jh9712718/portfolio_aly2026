@@ -5,15 +5,16 @@ interface DeckCard {
   label: string;
   mainText: string;
   colorVar: string;
+  inkVar: string;
   workKey: string;
 }
 
 const cards: DeckCard[] = [
-  { label: "Campaign Planning", mainText: "Designing Strategic Solutions", colorVar: "--sage", workKey: "Campaign Planning" },
-  { label: "Event Management", mainText: "Architecting Shared Experiences", colorVar: "--dusty-rose", workKey: "Event Management" },
-  { label: "Graphic Design", mainText: "Shaping Visual Narratives", colorVar: "--terracotta", workKey: "Graphic Design" },
-  { label: "Video Editing", mainText: "Directing Motion & Rhythm", colorVar: "--slate", workKey: "Video Editing" },
-  { label: "Data Analytics", mainText: "Decoding Market Signals", colorVar: "--warm-black", workKey: "Data Analytics" },
+  { label: "Campaign Planning", mainText: "Designing Strategic Solutions", colorVar: "--sage", inkVar: "--cream", workKey: "Campaign Planning" },
+  { label: "Event Management", mainText: "Architecting Shared Experiences", colorVar: "--dusty-rose", inkVar: "--cream", workKey: "Event Management" },
+  { label: "Graphic Design", mainText: "Shaping Visual Narratives", colorVar: "--terracotta", inkVar: "--warm-black", workKey: "Graphic Design" },
+  { label: "Video Editing", mainText: "Directing Motion & Rhythm", colorVar: "--slate", inkVar: "--cream", workKey: "Video Editing" },
+  { label: "Data Analytics", mainText: "Decoding Market Signals", colorVar: "--warm-black", inkVar: "--cream", workKey: "Data Analytics" },
 ];
 
 // Stacked offsets (bottom card first)
@@ -58,14 +59,15 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
                   className="absolute inset-0 rounded-[28px] border border-foreground/5 p-5 md:p-7 flex flex-col justify-between origin-bottom"
                   style={{
                     background: `hsl(var(${card.colorVar}))`,
+                    color: `hsl(var(${card.inkVar}))`,
                     boxShadow: "var(--shadow-card)",
                     zIndex: cards.length - i,
                   }}
                 >
-                  <span className="text-[10px] tracking-label uppercase text-primary-foreground/65 font-body">
+                  <span className="text-[10px] tracking-label uppercase opacity-65 font-body">
                     {card.label}
                   </span>
-                  <span className="font-display text-2xl md:text-[2rem] text-primary-foreground leading-[1.05] max-w-[10ch]">
+                  <span className="font-display text-2xl md:text-[2rem] leading-[1.05] max-w-[10ch]">
                     {card.mainText}
                   </span>
                 </motion.div>
@@ -102,13 +104,14 @@ const StackedDeck: React.FC<StackedDeckProps> = ({ onCardClick }) => {
                   className="relative w-[320px] max-w-full rounded-[28px] px-5 py-6 min-h-[180px] md:h-[420px] md:w-[280px] md:max-w-none md:flex-none md:p-7 border border-foreground/5 cursor-pointer flex flex-col justify-between"
                   style={{
                     background: `hsl(var(${card.colorVar}))`,
+                    color: `hsl(var(${card.inkVar}))`,
                     boxShadow: "var(--shadow-card)",
                   }}
                 >
-                  <span className="text-[10px] tracking-label uppercase text-primary-foreground/65 font-body pl-0.5">
+                  <span className="text-[10px] tracking-label uppercase opacity-65 font-body pl-0.5">
                     {card.label}
                   </span>
-                  <span className="font-display text-[1.9rem] md:text-[2rem] text-primary-foreground leading-[1.05] max-w-[8.6ch] pl-0.5">
+                  <span className="font-display text-[1.9rem] md:text-[2rem] leading-[1.05] max-w-[8.6ch] pl-0.5">
                     {card.mainText}
                   </span>
                 </motion.div>
