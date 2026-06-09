@@ -6,14 +6,14 @@
 
 @layer base {
   :root {
-    --background: 60 20% 95%;       /* #F5F5F0 electric surface */
-    --foreground: 240 17% 8%;       /* #111118 ink */
+    --background: 235 56% 24%;      /* #1A1F5E deep navy */
+    --foreground: 60 20% 95%;       /* #F5F5F0 electric surface */
 
-    --card: 60 20% 98%;
-    --card-foreground: 240 17% 8%;
+    --card: 240 17% 8%;             /* #111118 ink */
+    --card-foreground: 60 20% 95%;
 
-    --popover: 60 20% 98%;
-    --popover-foreground: 240 17% 8%;
+    --popover: 240 17% 8%;
+    --popover-foreground: 60 20% 95%;
 
     --primary: 50 100% 50%;         /* #FFD600 electric yellow */
     --primary-foreground: 240 17% 8%;
@@ -21,8 +21,8 @@
     --secondary: 235 56% 24%;       /* #1A1F5E deep navy */
     --secondary-foreground: 60 20% 95%;
 
-    --muted: 235 22% 88%;
-    --muted-foreground: 238 8% 42%;
+    --muted: 235 32% 35%;
+    --muted-foreground: 235 28% 84%;
 
     --accent: 230 99% 62%;          /* #3D5AFE electric blue */
     --accent-foreground: 60 20% 95%;
@@ -30,8 +30,8 @@
     --destructive: 0 62% 55%;
     --destructive-foreground: 60 20% 95%;
 
-    --border: 235 19% 82%;
-    --input: 235 19% 82%;
+    --border: 235 30% 38%;
+    --input: 235 30% 38%;
     --ring: 230 99% 62%;
 
     --radius: 0.75rem;
@@ -41,15 +41,15 @@
     --sage: 235 56% 24%;
     --slate: 230 99% 62%;
     --dusty-rose: 247 55% 44%;
-    --warm-sand: 235 22% 88%;
+    --warm-sand: 235 22% 76%;
     --warm-black: 240 17% 8%;
     --cream: 60 20% 95%;
 
     --font-display: 'DM Serif Display', serif;
     --font-body: 'DM Sans', sans-serif;
 
-    --shadow-card: 0 1px 3px rgba(17,17,24,0.05), 0 10px 28px -10px rgba(26,31,94,0.14);
-    --shadow-card-hover: 0 4px 12px rgba(17,17,24,0.08), 0 18px 38px -12px rgba(26,31,94,0.2);
+    --shadow-card: 0 1px 3px rgba(17,17,24,0.18), 0 14px 34px -14px rgba(0,0,0,0.42);
+    --shadow-card-hover: 0 6px 16px rgba(17,17,24,0.2), 0 22px 48px -16px rgba(0,0,0,0.5);
   }
 }
 
